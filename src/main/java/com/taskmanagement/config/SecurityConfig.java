@@ -16,7 +16,6 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
 
     public SecurityConfig(JwtAuthFilter jwtAuthFilter) {
-        System.out.println("🔥 SecurityConfig is Loaded! ✅");
         this.jwtAuthFilter = jwtAuthFilter;
     }
 

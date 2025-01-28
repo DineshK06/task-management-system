@@ -12,12 +12,14 @@ import java.util.Date;
 @Component
 public class JWTUtil {
     private static final String SECRET_KEY = "your_secret_key";
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+    private static final long EXPIRATION_TIME = 60 * 60 * 1000; // 1 hour
 
     public String generateToken(String username) {
+        long expiryTime = System.currentTimeMillis() + EXPIRATION_TIME;
+        System.out.println("JWT Expiry Time: " + new Date(expiryTime));
         return JWT.create()
                 .withSubject(username)
-                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .withExpiresAt(new Date(expiryTime))
                 .sign(Algorithm.HMAC256(SECRET_KEY));
     }
 
@@ -25,8 +27,10 @@ public class JWTUtil {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SECRET_KEY)).build();
             DecodedJWT jwt = verifier.verify(token);
+            System.out.println("Token Expiry: " + jwt.getExpiresAt());
             return jwt.getSubject();
         } catch (JWTVerificationException e) {
+            System.out.println("Invalid or Expired Token!");
             return null; // Invalid token
         }
     }

@@ -2,7 +2,6 @@ package com.taskmanagement.service;
 
 import com.taskmanagement.model.User;
 import com.taskmanagement.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,11 +10,13 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<User> getAllUser() { return userRepository.findAll();
     }
 
     public Optional<User> getUserById(Long id) {
