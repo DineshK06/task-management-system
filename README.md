@@ -1,18 +1,27 @@
 # 🚀 Task Management System  
+1️⃣ 📌 Project Overview
 A **Spring Boot-based Task Management System** with JWT Authentication, Role-Based Access Control, and Dockerized Deployment.
+
+📌 Tech Stack
+Backend: Java 23, Spring Boot, Spring Security
+Database: PostgreSQL
+Authentication: JWT (JSON Web Token)
+Deployment: Docker, AWS EC2
 
 ## 🔹 Features  
 - ✅ **User Authentication** (Signup/Login with JWT)  
 - ✅ **Role-Based Access** (Admin/User Permissions)  
 - ✅ **Task CRUD Operations** (Create, Read, Update, Delete)  
-- ✅ **PostgreSQL Database Integration**  
+- ✅ **PostgreSQL Database Integration**
+- ✅ Rate Limiting (Bucket4j for Security)
+- ✅ Database Indexing for Performance  
 - ✅ **Dockerized Deployment**  
 - ✅ **Live Hosting on AWS EC2**  
 
 ---
 
 ## 🌍 Live Demo  
-🔗 **Base API URL:** [`http://13.234.29.150:8080`](http://13.234.29.150:8080)  
+🔗 **Base API URL:** http://65.0.178.187:8080  
 
 > **NOTE:** AWS Free Tier may shut down inactive instances, so restart if needed.
 
@@ -45,15 +54,17 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 3️⃣ Run the application:
     - mvn spring-boot:run
 
-
 🔹 Run with Docker
 docker-compose up --build -d
 
-📌 Tech Stack
-Backend: Java 23, Spring Boot, Spring Security
-Database: PostgreSQL
-Authentication: JWT (JSON Web Token)
-Deployment: Docker, AWS EC2
+ 📌 Security & Optimization
+ - JWT Expiry Validation: Tokens expire after 1 hour.
+ - Rate Limiting: Protects APIs from brute force attacks.
+ - Database Indexing: PostgreSQL index on username for fast lookups.
+
+📌 Contribution Guidelines & License
+- Mention Open Source Contributions (if applicable).
+- Add MIT License if open-source.
 
 📜 License
 This project is open-source and free to use.
